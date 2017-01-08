@@ -62,6 +62,23 @@
 	height: 3.5rem;
 }
 
+.forget-password {
+	font-size: 1.5rem;
+}
+
+.facebook-login {
+	margin: 2rem 0;
+}
+
+.register-form {
+	margin-top: 2rem;
+}
+
+.managementNavbar h1 {
+	color: #fff;
+	font-size: 2.5rem;
+	text-align: center
+}
 
 @media screen and (max-width: 768px) {
     .myfarmbot-side-nav {

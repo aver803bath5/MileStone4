@@ -1,0 +1,63 @@
+<div id="side-nav" class="myfarmbot-side-nav container-relative pull-left">
+	<div class="project-descr">
+		<h1>
+			自動種植機
+		</h1>
+		<p>
+			全自動化機器種植與遠端監控
+		</p>
+	</div>
+	<ul class="nav nav-pills nav-stacked feature-container">
+		<li><i class="fa fa-leaf fa-fw" aria-hidden="true"></i>種植</li>
+		<li><i class="fa fa-tint fa-fw" aria-hidden="true"></i>澆水</li>
+		<li><i class="fa fa-scissors fa-fw" aria-hidden="true"></i>除草</li>
+		<li><i class="fa fa-eye fa-fw" aria-hidden="true"></i>監測</li>
+	</ul>
+</div>
+<div class="myfarmbot-content container-relative">
+		
+<div class="animated bounceInRight login-page" ng-controller="LoginAndRegister">
+<tabs>
+	<pane title="登入">
+		<div class="text-center facebook-login">
+			<button type="button" class="btn btn-primary btn-lg text-center">facebook登入</button>
+		</div>
+		<form>	
+			<div class="form-group">
+				<input class="form-control" type="email" name="email" placeholder="信箱" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" name="password" placeholder="密碼" />
+			</div>
+			<div class="text-right">
+				<a class="btn btn-success btn-lg" href="manageMachine" ng-click="login()">登入</a>
+			</div>
+		</form>
+		<div class="text-center">
+			<a href="" class="forget-password">忘記密碼</a>
+		</div>
+
+	</pane>
+	<pane title="註冊">
+		<form class="register-form">	
+			<div class="form-group">
+				<input class="form-control" type="type" name="name" placeholder="名稱" />
+			</div>
+
+			<div class="form-group">
+				<input class="form-control" type="email" name="email" placeholder="信箱" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" name="password" placeholder="密碼" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" name="passwordCheck" placeholder="密碼確認" />
+			</div>
+			<div class="text-right">
+				<a class="btn btn-success btn-lg" href="">註冊</a>
+			</div>
+		</form>
+	</pane>
+</tabs>
+</div>
+</div>
