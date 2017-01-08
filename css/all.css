@@ -1,0 +1,79 @@
+.fill-screen {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.myfarmbot-side-nav {
+	background-color: #0dc61d;
+	width: 25%;
+	padding: 0 5rem;
+}
+
+.container-relative {
+	position: relative;
+	height: 100%;
+	overflow: auto;
+}
+
+.project-descr {
+	margin-top: 5rem;
+	color: #fff
+}
+
+.project-descr h1 {
+	font-size: 4rem
+}
+
+.project-descr p {
+	font-size: 2.5rem
+}
+
+.feature-container {
+	margin-top: 2.5rem;
+	color: #fff;
+}
+
+.feature-container li {
+	font-size: 2.7rem;
+	line-height: 4rem
+}
+
+.myfarmbot-content {
+	width: 75%;
+	padding: 0 7rem;
+}
+
+.match-h2 {
+	text-align: center;
+	color: #0dc61d;
+	font-size: 5rem
+}
+
+.match-form .form-group span{
+	font-size: 2.7rem;
+	line-height: 3rem
+}
+
+.match-form .form-group input {
+	font-size: 2rem;
+	height: 3.5rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .myfarmbot-side-nav {
+		display: none;
+    }
+
+    .myfarmbot-content {
+    	width: 100%;
+    	padding: 0 3rem;
+    }
+
+    #saveMachineConfig {
+    	width: 100%;
+    }
+}
