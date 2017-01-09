@@ -24,8 +24,9 @@
 		</div>
 	</paneManagement>
 	<paneManagement title="我的植物">
-		<nvd3 options="options" data="data"></nvd3>
-		
+		<div ng-controller="fieldViewController">
+			<field chart-data="myData"></field>
+		</div>		
 	</paneManagement>
 	<paneManagement title="事件">
 	</paneManagement>
