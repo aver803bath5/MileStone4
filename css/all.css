@@ -102,9 +102,64 @@
 	box-shadow: 2px 2px 2px #666;
 }
 
+.field-container {
+	height: 100%;
+	overflow: auto;
+}
+
+.field {
+	margin: auto
+}
+
+.field tbody tr td {
+  width: 5rem;
+  height: 5rem;
+}
+
+.plant-container {
+  padding-left: 3rem
+}
+
+.plant-total {
+  font-size: 2rem
+}
+
+.plant-list {
+  list-style-type: none
+}
+
+.plant-name {
+  font-size: 1.8rem
+}
+
+.sequence-container {
+  padding-left: 3rem
+}
+
+.sequence-total {
+  font-size: 2rem
+}
+
+.sequence-list {
+  list-style-type: none
+}
+
+.sequence-name {
+  font-size: 1.8rem
+}
+
+.done-true {
+  color: red
+}
+
+.edit-button {
+  font-color:#fff;
+  font-size: 2rem
+}
+
 @media screen and (max-width: 768px) {
     .myfarmbot-side-nav {
-		display: none;
+	display: none;
     }
 
     .myfarmbot-content {

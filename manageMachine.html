@@ -24,11 +24,65 @@
 		</div>
 	</paneManagement>
 	<paneManagement title="我的植物">
-		<div ng-controller="fieldViewController">
-			<field chart-data="myData"></field>
+		<div class="container-fluid">
+      			<div class="col-md-6 field-container">
+      				<table class="table-bordered field">
+      				</table>
+      			</div>
+			<div class="col-md-6 plant-container">
+				 <h2>植物們</h2>
+				    <div ng-controller="TodoListController as todoList">
+					   	<span class="plant-total">目前有{{todoList.todos.length}}個植物</span>
+						   <button type="button" class="btn btn-danger" href="" ng-click="todoList.archive()">刪除</button> 
+							<ul class="plant-list">
+								<li ng-repeat="todo in todoList.todos">
+									<label class="checkbox">
+										<input type="checkbox" ng-model="todo.done">
+										<span class="done-{{todo.done}} plant-name" ng-show="todo.edit!=true">{{todoList.getText($index)}}</span>
+										<input type="text" ng-model="todo.text" ng-show="todo.edit==true" />
+										<a href='' class='edit-button' ng-click="todoList.edit($index)" ng-show="todo.edit!=true"><i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i></a>
+										<a href='' class='edit-button' ng-click="todoList.edit($index)" ng-show="todo.edit==true"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i></a>
+									</label>
+								</li>
+							</ul>
+							<form ng-submit="todoList.addTodo()">
+								<input type="text" ng-model="todoList.todoText"  size="30"  placeholder="植物名稱">
+								<input class="btn btn-primary" type="submit" value="add">
+							</form>
+						</div>
+			</div>
 		</div>		
 	</paneManagement>
 	<paneManagement title="事件">
+	  <div class="container-fluid">
+      			<div class="col-md-6 field-container">
+      				<table class="table-bordered field" ng-controller="FieldController">
+      				</table>
+      			</div>
+			<div class="col-md-6 sequence-container">
+				 <h2>排程們</h2>
+				    <div ng-controller="SequenceListController as sequenceList">
+					   	<span class="sequence-total">目前有{{sequenceList.sequences.length}}個排程</span>
+						   <button type="button" class="btn btn-danger" href="" ng-click="sequenceList.archive()">刪除</button> 
+							<ul class="sequence-list">
+								<li ng-repeat="sequence in sequenceList.sequences">
+									<label class="checkbox">
+										<input type="checkbox" ng-model="sequence.done">
+										<span class="done-{{sequence.done}} sequence-name"  ng-show="sequence.edit!=true">{{sequence.text}}</span>
+										<input type="text" ng-model="sequence.text" ng-show="sequence.edit==true" />
+										<a href='' class='edit-button' ng-click="sequenceList.edit($index)" ng-show="sequence.edit!=true"><i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i></a>
+										<a href='' class='edit-button' ng-click="sequenceList.edit($index)" ng-show="sequence.edit==true"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i></a>
+									</label>
+								</li>
+							</ul>
+							<form ng-submit="sequenceList.addSequence()">
+								<input type="text" ng-model="sequenceList.sequenceText"  size="30"  placeholder="排程名稱">
+								<input class="btn btn-primary" type="submit" value="add">
+							</form>
+						</div>
+			</div>
+		</div>		
+
 	</paneManagement>
 	<paneManagement title="環境監測">
 	</paneManagement>
