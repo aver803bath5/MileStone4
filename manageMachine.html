@@ -112,6 +112,47 @@
 
 	</paneManagement>
 	<paneManagement title="環境監測">
+	<div class="container-fluid">
+	<div class="col-xs-12 col-md-6">
+	  <div ng-controller="ChartController" class='table-responsive chart-contianer'>
+	    <nvd3 options="options" data="data"></nvd3>
+	  </div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+	  <div class="timeInterval-container">
+	    <div class="form-group">
+	      <input type="datetime-local" class="form-control"/>
+	    </div>
+	    <div class="text-center timeInterval">到</div>
+	    <div class="form-group">
+	     <input type="datetime-local" class="form-control"/>
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	    <div class="text-center panel-heading">植物</div>
+	      <div class="panel-body">
+		      <div ng-controller="TodoListController as todoList">
+			      <div class="form-group text-center">
+			        <input type="text" ng-model="searchPlant" />
+			      </div>
+		        <ul>
+				      <li class="text-center plant-list" ng-repeat="todo in todoList.todos | filter:searchPlant">
+					      {{todo.text}}
+				      </li>
+			      </ul>	
+		      </div>
+	    </div>
+	  </div>
+		<div class="panel panel-default">
+		  <div class="panel-heading text-center">查詢目標</div>
+			  <div class="panel-body text-center">
+					<div class="form-group">
+						<input type="text" />
+					</div>
+				</div>
+		  </div>
+	  </div>
+	</div>
 	</paneManagement>
 	<paneManagement title="帳戶">
 	</paneManagement>

@@ -1,4 +1,4 @@
-angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
+angular.module('MyFarmBot', ['ngRoute', 'nvd3', 'pansComponents', 'd3Components'])
 
 .controller('MainController', function($scope) {
  })
