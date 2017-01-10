@@ -70,14 +70,16 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
 })
 
 .controller('SequenceListController', function($scope) {
+  $('.collapse').collapse();
   var sequenceList = this;
   sequenceList.sequences = [
           {
             name:'失火',
 	    month: 12,
 	    day: 25,
-	    action:[
-		    {name: "澆水", hour: 00, min: 00, done: false, edit: false}
+	    actions:[
+		    {name: "澆水", hour: 00, min: 00, done: false, edit: false},
+                    {name: "採收", hour: 00, min: 00, done: false, edit: false}
 	           ],
 	    done: true,
 	    edit: false
@@ -86,12 +88,12 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
             name:'麥當勞歡樂送',
 	    month: 12,
 	    day: 25,
-	    action:[
-		    {name: "澆水", hour: 00, min: 00, done: false, edit: false}
+	    actions:[
+		    {name: "湮滅證據", hour: 00, min: 00, done: false, edit: false}
 	           ],
 	    done:true,
 	    edit:false
-	  },
+	  }
 
 	];
   

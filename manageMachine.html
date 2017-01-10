@@ -66,18 +66,28 @@
 				 <h2>排程們</h2>
 				    <div ng-controller="SequenceListController as sequenceList">
 					   	<span class="sequence-total">目前有{{sequenceList.sequences.length}}個排程</span>
-						   <button type="button" class="btn btn-danger" href="" ng-click="sequenceList.archive()">刪除</button> 
-							<ul class="sequence-list">
-								<li ng-repeat="sequence in sequenceList.sequences">
-									<label class="checkbox">
-										<input type="checkbox" ng-model="sequence.done">
-										<span class="done-{{sequence.done}} sequence-name"  ng-show="sequence.edit!=true">{{sequence.name}}</span>
-										<input type="text" ng-model="sequence.name" ng-show="sequence.edit==true" required/>
+							<!--排程的collapse-->
+							<div id="accordion" class="panel-group">
+								<div class="panel paanl-default" ng-repeat="sequence in sequenceList.sequences">
+									<div class="panel-heading" role="tab">
+										<form name="sequenceName">
+														<a class="sequence-name" role="button" data-toggle="collapse" data-parent="#accordion"  aria-expanded="true" aria-controls="collapse" ng-href="/#collapse{{$index}}" ng-show="sequence.edit!=true">
+                          {{sequence.name}}
+                        </a>
+										  <input type="text" ng-model="sequence.name" ng-show="sequence.edit==true" required/> 
 										<a href='' class='edit-button' ng-click="sequenceList.edit($index)" ng-show="sequence.edit!=true"><i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i></a>
 										<a href='' class='edit-button' ng-click="sequenceList.edit($index)" ng-show="sequence.edit==true"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i></a>
-									</label>
-								</li>
-							</ul>
+									 </form>
+                  </div>
+									<div class="panel-collapse collapse" id="collapse{{$index}}" role="tabpanel">
+                    <ul class="list-group">
+                      <li class="list-group-item" ng-repeat="action in sequence.actions">
+															<span> {{action.name}}</span>
+                      </li>
+                    </ul>
+                  </div>
+								</div>
+							</div>
 							<form ng-submit="sequenceList.addSequence()">
 								<input type="text" ng-model="sequenceList.sequenceName"  size="30"  placeholder="排程名稱" required />
 								<input class="btn btn-primary" type="submit" value="add" />
