@@ -75,23 +75,21 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
   sequenceList.sequences = [
           {
             name:'失火',
-	    month: 12,
-	    day: 25,
+	    date: new Date(2017, 1, 29),
 	    actions:[
-		    {name: "澆水", hour: 00, min: 00, done: false, edit: false},
-                    {name: "採收", hour: 00, min: 00, done: false, edit: false}
+		    {name: "澆水", time: new Date(1970, 0, 1, 14, 57, 0), done: false, edit: false},
+                    {name: "採收", time: new Date(1970, 0, 1, 14, 20 , 0), done: false, edit: false}
 	           ],
-	    done: true,
+	    done: false,
 	    edit: false
 	  },
           {
             name:'麥當勞歡樂送',
-	    month: 12,
-	    day: 25,
+	    date: new Date(2017, 1, 10),
 	    actions:[
-		    {name: "湮滅證據", hour: 00, min: 00, done: false, edit: false}
+		    {name: "湮滅證據", time: new Date(1970, 0, 1, 16, 22, 0), edit: false}
 	           ],
-	    done:true,
+	    done:false,
 	    edit:false
 	  }
 
@@ -101,10 +99,19 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
 	  if(sequenceList.sequenceName.$invalid) {
 	    return false;
 	  }
-
-          sequenceList.sequences.push({name: sequenceList.sequenceName, done:false, edit:false});
+          
+          sequenceList.sequences.push({name: sequenceList.sequenceName, date: new Date(), actions:[], done:false, edit:false});
           sequenceList.sequenceName = '';
         };
+
+  sequenceList.addAction = function(index) {
+	  if(!sequenceList.actionName) {
+	    return false;
+	  }
+          sequenceList.sequences[index].actions.push({name: sequenceList.actionName, time: new Date(), done:false, edit:false});
+          sequenceList.actionName = '';
+        };
+
    
   sequenceList.remaining = function() {
           var count = 0;
@@ -114,13 +121,25 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
           return count;
         };
    
-  sequenceList.archive = function() {
+  sequenceList.archiveSequence = function() {
           var oldSequences = sequenceList.sequences;
           sequenceList.sequences = [];
           angular.forEach(oldSequences, function(sequence) {
                     if (!sequence.done) sequenceList.sequences.push(sequence);
                   });
         };
+
+  sequenceList.archiveAction = function() {
+          var oldSequences = sequenceList.sequences;
+          angular.forEach(oldSequences, function(sequence) {
+		    var oldActions = sequence.actions;
+		    sequence.actions = [];
+		    angular.forEach(oldActions, function(action) {
+		      if (!action.done) sequence.actions.push(action);
+		    });
+                  });
+        };
+
 
   sequenceList.edit = function(index) {
     if(sequenceList.sequences[index].edit) {

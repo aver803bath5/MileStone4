@@ -153,12 +153,24 @@
 }
 
 .edit-button {
-  font-color:#fff;
-  font-size: 2rem
+  font-size: 2.5rem
+}
+
+.delete-btn {
+  color: red;
+  font-size: 2.5rem
 }
 
 .error-message {
   color: red
+}
+
+.panel {
+  font-size: 2rem
+}
+
+input[name=actionName] {
+  font-size: 1.5rem
 }
 @media screen and (max-width: 768px) {
     .myfarmbot-side-nav {

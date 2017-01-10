@@ -70,20 +70,34 @@
 							<div id="accordion" class="panel-group">
 								<div class="panel paanl-default" ng-repeat="sequence in sequenceList.sequences">
 									<div class="panel-heading" role="tab">
-										<form name="sequenceName">
+										<form name="sequenceForm">
+														<span ng-show="!sequence.edit">{{sequence.date | date: "yyyy年MM月dd日"}}</span>
+														<input type="date" name="sequenceDatetime" ng-model="sequence.date" ng-show="sequence.edit==true" required/> 
 														<a class="sequence-name" role="button" data-toggle="collapse" data-parent="#accordion"  aria-expanded="true" aria-controls="collapse" ng-href="/#collapse{{$index}}" ng-show="sequence.edit!=true">
                           {{sequence.name}}
                         </a>
-										  <input type="text" ng-model="sequence.name" ng-show="sequence.edit==true" required/> 
+										  <input type="text" name="sequenceName" ng-model="sequence.name" ng-show="sequence.edit==true" required/> 
 										<a href='' class='edit-button' ng-click="sequenceList.edit($index)" ng-show="sequence.edit!=true"><i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i></a>
-										<a href='' class='edit-button' ng-click="sequenceList.edit($index)" ng-show="sequence.edit==true"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i></a>
-									 </form>
+										<a href='' class='edit-button' ng-click="sequenceList.edit($index)" ng-show="sequence.edit==true && sequenceForm.sequenceName.$valid "><i class="fa fa-check-square fa-fw" aria-hidden="true"></i></a>
+										<a href='' class='delete-btn' ng-click="sequence.done = true; sequenceList.archiveSequence()"><i class="fa fa-times" aria-hidden="true"></i></a>
+										</form>
                   </div>
 									<div class="panel-collapse collapse" id="collapse{{$index}}" role="tabpanel">
                     <ul class="list-group">
                       <li class="list-group-item" ng-repeat="action in sequence.actions">
-															<span> {{action.name}}</span>
-                      </li>
+													<form name="actionForm">
+															<span ng-show="!action.edit">{{action.time | date: "HH點mm分"}}</span>
+															<input type="time" name="actionDatetime" ng-model="action.time" ng-show="action.edit" required/> 
+															<span ng-show="!action.edit"> {{action.name}}</span>
+                      				<input type="text" name="actionName" ng-model="action.name" ng-show="action.edit" required/> 
+															<a href='' class='edit-button' ng-click="action.edit=true" ng-show="!action.edit"><i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i></a>
+															<a href='' class='edit-button' ng-click="action.edit=false" ng-show="action.edit && actionForm.actionName.$valid"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i></a>
+												     <a href='' class='delete-btn' ng-click="action.done = true; sequenceList.archiveAction()"><i class="fa fa-times" aria-hidden="true"></i></a>
+                           </form>
+											</li>
+											<input type="text" name="actionName" ng-model="sequenceList.actionName" size="30" placeholder="動作" required />
+											<input class="btn btn-primary" type="button" ng-click="sequenceList.addAction($index)" value="add" />
+	
                     </ul>
                   </div>
 								</div>
