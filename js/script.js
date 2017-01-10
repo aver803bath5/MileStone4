@@ -150,6 +150,10 @@ angular.module('MyFarmBot', ['ngRoute', 'nvd3', 'pansComponents', 'd3Components'
   }
 })
 
+.controller('EndController', function($scope) {
+  $scope.thanks = "謝謝大家";
+})
+
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when('/', {
@@ -168,6 +172,13 @@ angular.module('MyFarmBot', ['ngRoute', 'nvd3', 'pansComponents', 'd3Components'
     templateUrl: '/manageMachine.html',
     controller: 'ManageMachine'
   });
+  
+  $routeProvider
+  .when('/end', {
+    templateUrl: '/end.html',
+    controller: 'EndController'
+  });
+
 
   // configure html5 to get links working on jsfiddle
   $locationProvider.html5Mode(true);

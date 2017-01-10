@@ -154,6 +154,16 @@
 input[name=actionName] {
   font-size: 1.5rem
 }
+
+.thanks {
+  background-color: #0dc61d
+}
+
+.thanks h1 {
+  font-size: 30rem;
+  color: #fff;
+  line-height: 70rem
+}
 @media screen and (max-width: 768px) {
     .myfarmbot-side-nav {
 	display: none;
