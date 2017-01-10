@@ -32,7 +32,7 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
   }
 
   todoList.addTodo = function() {
-	  if(todoList.todoText === '' ||  typeof todoList.todoText === 'undefined') {
+	  if(todoList.todoText == '' || todoList.todoText == 'undefined') {
 	    return false;
 	  }
 
@@ -57,6 +57,10 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
         };
 
   todoList.edit = function(index) {
+     if($('input[name=plantName]').val() == '') {
+      return false;
+     }
+
     if(todoList.todos[index].edit) {
       todoList.todos[index].edit = false;
     }else{
@@ -68,21 +72,36 @@ angular.module('MyFarmBot', ['ngRoute', 'pansComponents'])
 .controller('SequenceListController', function($scope) {
   var sequenceList = this;
   sequenceList.sequences = [
-          {text:'失火', done:true, edit:false},
-          {text:'麥當勞歡樂送', done:false, edit:false}];
-  
-  sequenceList.getText = function(index) {
-    console.log(sequenceList.sequencesos[index].text);
-    return sequenceList.sequences[index].text;
-  }
+          {
+            name:'失火',
+	    month: 12,
+	    day: 25,
+	    action:[
+		    {name: "澆水", hour: 00, min: 00, done: false, edit: false}
+	           ],
+	    done: true,
+	    edit: false
+	  },
+          {
+            name:'麥當勞歡樂送',
+	    month: 12,
+	    day: 25,
+	    action:[
+		    {name: "澆水", hour: 00, min: 00, done: false, edit: false}
+	           ],
+	    done:true,
+	    edit:false
+	  },
 
+	];
+  
   sequenceList.addSequence = function() {
-	  if(sequenceList.sequenceText === '' ||  typeof sequenceList.sequenceText === 'undefined') {
+	  if(sequenceList.sequenceName.$invalid) {
 	    return false;
 	  }
 
-          sequenceList.sequences.push({text:sequenceList.sequenceText, done:false, edit:false});
-          sequenceList.sequenceText = '';
+          sequenceList.sequences.push({name: sequenceList.sequenceName, done:false, edit:false});
+          sequenceList.sequenceName = '';
         };
    
   sequenceList.remaining = function() {

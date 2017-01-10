@@ -157,6 +157,9 @@
   font-size: 2rem
 }
 
+.error-message {
+  color: red
+}
 @media screen and (max-width: 768px) {
     .myfarmbot-side-nav {
 	display: none;
