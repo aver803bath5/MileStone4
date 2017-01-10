@@ -145,10 +145,17 @@
 	  </div>
 		<div class="panel panel-default">
 		  <div class="panel-heading text-center">查詢目標</div>
+			<div ng-init="elements=[{name: '濕度'}, {name: '溫度'}, {name: '導電度'}]">
+				</div>
 			  <div class="panel-body text-center">
 					<div class="form-group">
-						<input type="text" />
+						<input type="text" ng-model="searchElement"/>
 					</div>
+					<ul class="plant-list">
+					  <li ng-repeat="element in elements | filter:searchElement">
+						  {{element.name}}
+						</li>
+					</ul>
 				</div>
 		  </div>
 	  </div>
