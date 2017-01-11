@@ -7,6 +7,7 @@ angular.module('MyFarmBot', ['ngRoute', 'nvd3', 'pansComponents', 'd3Components'
 })
 
 .controller('ManageMachine', function($scope) {
+  
 })
 
 .controller('FieldController', function($scope) {
